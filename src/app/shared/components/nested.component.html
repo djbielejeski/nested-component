@@ -1,0 +1,16 @@
+<div *ngIf="data" style="margin-top: 12px; margin-left: 24px;">
+  <button (click)="dataSelected.emit(data); expanded = !expanded">
+    {{ data.name }} {{ data.type ? '| ' + data.type : '' }} {{ expanded ? 'Close' : 'Open'}}
+  </button>
+  <div *ngIf="expanded">
+    <div *ngFor="let item of data.choices">
+      <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+    </div>
+    <div *ngFor="let item of data.options">
+      <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+    </div>
+    <div *ngFor="let item of data.properties">
+      <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+    </div>
+  </div>
+</div>
