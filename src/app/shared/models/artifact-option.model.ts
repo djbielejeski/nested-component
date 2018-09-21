@@ -4,4 +4,5 @@ export interface ArtifactOption {
   properties?: ArtifactOption[];
   options?: ArtifactOption[];
   choices?: ArtifactOption[];
+  multiple?: boolean;
 }

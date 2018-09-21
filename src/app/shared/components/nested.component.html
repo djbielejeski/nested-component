@@ -1,16 +1,88 @@
 <div *ngIf="data" style="margin-top: 12px; margin-left: 24px;">
-  <button (click)="dataSelected.emit(data); expanded = !expanded">
-    {{ data.name }} {{ data.type ? '| ' + data.type : '' }} {{ expanded ? 'Close' : 'Open'}}
-  </button>
-  <div *ngIf="expanded">
-    <div *ngFor="let item of data.choices">
-      <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+  <div [ngSwitch]="true" *ngIf="data.type">
+    <div *ngSwitchCase="data.type == 'choice' || data.type == 'Choice'">
+      <div *ngIf="!data.multiple">
+        <label>
+          {{ data.name }}
+          <select [attr.multiple]="" [(ngModel)]="selectedOption">
+            <option [ngValue]="null">Select...</option>
+            <option *ngFor="let item of data.options"
+                    [ngValue]="item">
+              {{ item.name }}
+            </option>
+          </select>
+        </label>
+        <app-nested-component [data]="selectedOption" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+      </div>
+      <div *ngIf="data.multiple">
+        <label>
+          {{ data.name }}
+          <select multiple [(ngModel)]="selectedOptions">
+            <option [ngValue]="null">Select...</option>
+            <option *ngFor="let item of data.options"
+                    [ngValue]="item">
+              {{ item.name }}
+            </option>
+          </select>
+        </label>
+        <div *ngFor="let option of selectedOptions">
+          <app-nested-component [data]="option" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+        </div>
+      </div>
     </div>
-    <div *ngFor="let item of data.options">
-      <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+    <div *ngSwitchCase="data.type == 'float'">
+      <label>
+        {{ data.name }} (float)
+        <input type="number" />
+      </label>
     </div>
-    <div *ngFor="let item of data.properties">
-      <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+    <div *ngSwitchCase="data.type == 'integer'">
+      <label>
+        {{ data.name }} (integer)
+        <input type="number" />
+      </label>
     </div>
+    <div *ngSwitchCase="data.type == 'boolean'">
+      <label>
+        {{ data.name }} (boolean)
+        <input type="checkbox" />
+      </label>
+    </div>
+    <div *ngSwitchCase="data.type == 'text'">
+      <label>
+        {{ data.name }} (text)
+        <textarea></textarea>
+      </label>
+    </div>
+    <div *ngSwitchCase="data.type == 'group'">
+      <div *ngFor="let item of data.properties">
+        <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+      </div>
+    </div>
+    <div *ngSwitchDefault>
+      {{ data.name }} ({{ data.type }})
+    </div>
+  </div>
+  <div *ngIf="!data.type">
+    <div *ngIf="data.options || data.choices || data.properties; else noOptions">
+      <button (click)="expanded = !expanded">
+        {{ data.name }} ({{ expanded ? 'Close' : 'Open'}})
+      </button>
+      <div *ngIf="expanded">
+        <div *ngFor="let item of data.options">
+          <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+        </div>
+        <div *ngFor="let item of data.choices">
+          <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+        </div>
+        <div *ngFor="let item of data.properties">
+          <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
+        </div>
+      </div>
+    </div>
+    <ng-template #noOptions>
+      {{ data.name }}
+    </ng-template>
+
   </div>
 </div>

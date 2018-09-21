@@ -10,5 +10,7 @@ export class NestedComponent {
   @Input() data: ArtifactOption = null;
   @Output() dataSelected = new EventEmitter<ArtifactOption>();
 
+  selectedOption: ArtifactOption  = null;
+  selectedOptions: ArtifactOption[] = [];
   expanded = false;
 }
