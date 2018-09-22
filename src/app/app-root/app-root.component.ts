@@ -16,4 +16,8 @@ export class AppRootComponent implements OnInit {
       this.data = data;
     });
   }
+
+  saveArtifact(item: ArtifactOption | ArtifactOption[]) {
+    console.log(item);
+  }
 }

@@ -95,6 +95,7 @@
                     "properties": [
                       {
                         "name": "Morphology",
+                        "type": "choice",
                         "options": [
                           {
                             "name": "Debitage"

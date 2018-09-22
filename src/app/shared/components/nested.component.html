@@ -1,12 +1,22 @@
 <div *ngIf="data" style="margin-top: 12px; margin-left: 24px;">
-  <div [ngSwitch]="true" *ngIf="data.type">
-    <div *ngSwitchCase="data.type == 'choice' || data.type == 'Choice'">
+  <div [ngSwitch]="true" *ngIf="data.type || data.choices">
+    <div *ngSwitchCase="data.type == 'choice' || data.type == 'Choice' || data.choices != undefined">
       <div *ngIf="!data.multiple">
         <label>
           {{ data.name }}
-          <select [attr.multiple]="" [(ngModel)]="selectedOption">
+          <select [attr.multiple]=""
+                  [(ngModel)]="selectedOption"
+                  (ngModelChange)="dataSelected.emit(selectedOption)">
             <option [ngValue]="null">Select...</option>
+
+            <!-- support options -->
             <option *ngFor="let item of data.options"
+                    [ngValue]="item">
+              {{ item.name }}
+            </option>
+
+            <!-- Support choices -->
+            <option *ngFor="let item of data.choices"
                     [ngValue]="item">
               {{ item.name }}
             </option>
@@ -17,7 +27,9 @@
       <div *ngIf="data.multiple">
         <label>
           {{ data.name }}
-          <select multiple [(ngModel)]="selectedOptions">
+          <select multiple
+                  [(ngModel)]="selectedOptions"
+                  (ngModelChange)="dataSelected.emit(selectedOptions)">
             <option [ngValue]="null">Select...</option>
             <option *ngFor="let item of data.options"
                     [ngValue]="item">
@@ -33,25 +45,25 @@
     <div *ngSwitchCase="data.type == 'float'">
       <label>
         {{ data.name }} (float)
-        <input type="number" />
+        <input type="number" [(ngModel)]="data.characterValue" (ngModelChange)="dataSelected.emit(data)"/>
       </label>
     </div>
     <div *ngSwitchCase="data.type == 'integer'">
       <label>
         {{ data.name }} (integer)
-        <input type="number" />
+        <input type="number" [(ngModel)]="data.characterValue" (ngModelChange)="dataSelected.emit(data)" />
       </label>
     </div>
     <div *ngSwitchCase="data.type == 'boolean'">
       <label>
         {{ data.name }} (boolean)
-        <input type="checkbox" />
+        <input type="checkbox"  [(ngModel)]="data.characterValue" (ngModelChange)="dataSelected.emit(data)" />
       </label>
     </div>
     <div *ngSwitchCase="data.type == 'text'">
       <label>
         {{ data.name }} (text)
-        <textarea></textarea>
+        <textarea [(ngModel)]="data.characterValue" (ngModelChange)="dataSelected.emit(data)"></textarea>
       </label>
     </div>
     <div *ngSwitchCase="data.type == 'group'">
@@ -64,24 +76,17 @@
     </div>
   </div>
   <div *ngIf="!data.type">
-    <div *ngIf="data.options || data.choices || data.properties; else noOptions">
-      <button (click)="expanded = !expanded">
-        {{ data.name }} ({{ expanded ? 'Close' : 'Open'}})
-      </button>
-      <div *ngIf="expanded">
+    <div *ngIf="data.options || data.properties; else noOptions">
+        {{ data.name }}
         <div *ngFor="let item of data.options">
-          <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
-        </div>
-        <div *ngFor="let item of data.choices">
           <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
         </div>
         <div *ngFor="let item of data.properties">
           <app-nested-component [data]="item" (dataSelected)="dataSelected.emit($event)"></app-nested-component>
         </div>
-      </div>
     </div>
     <ng-template #noOptions>
-      {{ data.name }}
+      <!--{{ data.name }}-->
     </ng-template>
 
   </div>
