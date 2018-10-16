@@ -14,6 +14,7 @@ export class NestedComponent implements OnInit {
   @Input() parent: ArtifactOption = null;
   @Output() dataSelected = new EventEmitter<SelectedArtifactModel>();
   @Input() isReadOnly: boolean = null;
+  @Input() isNew: boolean = null;
 
   selectedOption: ArtifactOption  = null;
   selectedOptions: ArtifactOption[] = [];
@@ -21,6 +22,20 @@ export class NestedComponent implements OnInit {
   constructor(private artifactsOptionsService: ArtifactsOptionsService) {}
 
   ngOnInit() {
+    if (this.data && this.data.type === 'composition') {
+      if (this.data.multiple) {
+        this.selectedOptions = _.filter(this.data.properties, {characterValue: 'true'});
+      } else {
+        this.selectedOption = _.find(this.data.properties, {characterValue: 'true'});
+      }
+    }
+    if (this.data && this.data.type === 'choice') {
+      if (this.data.multiple) {
+        this.selectedOptions = _.filter(this.data.options, {characterValue: 'true'});
+      } else {
+        this.selectedOption = _.find(this.data.options, {characterValue: 'true'});
+      }
+    }
     // Fetch yourself from the server
     // TODO: Alex
 
@@ -32,7 +47,7 @@ export class NestedComponent implements OnInit {
   }
 
   compareOptions(artifactOption: ArtifactOption, artifactOption2: ArtifactOption): boolean {
-    return artifactOption && artifactOption2 ? artifactOption2.name === artifactOption2.name : artifactOption2 === artifactOption2;
+    return artifactOption && artifactOption2 ? artifactOption.name === artifactOption2.name : artifactOption === artifactOption2;
   }
 
   emitValue(value) {

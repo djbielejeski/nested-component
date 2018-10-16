@@ -6,12 +6,10 @@
       {
         "name": "Count",
         "type": "integer",
-        "characterValue": "10"
       },
       {
         "name": "Weight",
         "type": "float",
-        "characterValue": "111"
       },
       {
         "name": "Size Grade",
@@ -22,7 +20,6 @@
           },
           {
             "name": "G2",
-            "characterValue": "true"
           },
           {
             "name": "G3"
@@ -702,7 +699,6 @@
           {
             "name": "Pottery",
             "type": "composition",
-            "characterValue": "true",
             "properties": [
               {
                 "name": "Artifact Type",
@@ -717,7 +713,7 @@
                         "options": [
                           {
                             "name": "Handle",
-                            "type": "composition"
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
@@ -11231,15 +11227,12 @@
                 "name": "Temper",
                 "type": "choice",
                 "multiple": true,
-                "characterValue": "true",
                 "options": [
                   {
-                    "name": "Mixed",
-                    "characterValue": "true"
+                    "name": "Mixed"
                   },
                   {
                     "name": "Inorganic",
-                    "characterValue": "true",
                     "options": [
                       {
                         "name": "Grog"
