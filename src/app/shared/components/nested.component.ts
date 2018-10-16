@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import { ArtifactOption } from '../models';
 import {ArtifactsOptionsService} from '../services/artifacts-options.service';
+import { SelectedArtifactModel } from '../models/selected-artifact.model';
 
 @Component({
   selector: 'app-nested-component',
@@ -9,7 +10,8 @@ import {ArtifactsOptionsService} from '../services/artifacts-options.service';
 })
 export class NestedComponent implements OnInit {
   @Input() data: ArtifactOption = null;
-  @Output() dataSelected = new EventEmitter<ArtifactOption>();
+  @Input() parent: ArtifactOption = null;
+  @Output() dataSelected = new EventEmitter<SelectedArtifactModel>();
 
   selectedOption: ArtifactOption  = null;
   selectedOptions: ArtifactOption[] = [];
@@ -25,5 +27,9 @@ export class NestedComponent implements OnInit {
     //  // Once you assign the sub properties, they will all render and render their available children.
     //  this.data.properties = properties;
     // };
+  }
+
+  emitValue(value: ArtifactOption | ArtifactOption[]) {
+    this.dataSelected.emit( { parent: this.parent, selected: value});
   }
 }
