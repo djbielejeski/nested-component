@@ -1,7 +1,7 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 import { ArtifactOption } from '../models';
 import {ArtifactsOptionsService} from '../services/artifacts-options.service';
-import * as _ from 'lodash';
+import { SelectedArtifactModel } from '../models/selected-artifact.model';
 
 @Component({
   selector: 'app-nested-component',
@@ -10,8 +10,8 @@ import * as _ from 'lodash';
 })
 export class NestedComponent implements OnInit {
   @Input() data: ArtifactOption = null;
-  @Output() dataSelected = new EventEmitter<ArtifactOption>();
-  @Output() parentData: ArtifactOption = null;
+  @Input() parent: ArtifactOption = null;
+  @Output() dataSelected = new EventEmitter<SelectedArtifactModel>();
 
   selectedOption: ArtifactOption  = null;
   selectedOptions: ArtifactOption[] = [];
@@ -19,7 +19,6 @@ export class NestedComponent implements OnInit {
   constructor(private artifactsOptionsService: ArtifactsOptionsService) {}
 
   ngOnInit() {
-    this.parentData = this.data;
     // Fetch yourself from the server
     // TODO: Alex
 
@@ -30,28 +29,7 @@ export class NestedComponent implements OnInit {
     // };
   }
 
-  onChange(parentData: ArtifactOption, selectedData: ArtifactOption) {
-    console.log('in on change selected Data');
-    console.log(selectedData);
-    if (parentData.properties) {
-      _.forEach(parentData.properties, (item) => {
-        if (item !== selectedData) {
-          item.characterValue = null;
-          console.log('its the same');
-        }
-        item.characterValue = null;
-        console.log('in for each properties loop');
-        console.log(item);
-      });
-
-    }
-    if (parentData.options) {
-      _.forEach(parentData.options, (item) => {
-        if (item !== selectedData) {
-          item.characterValue = null;
-          console.log('its not the same');
-        }
-      });
-    }
+  emitValue(value: ArtifactOption | ArtifactOption[]) {
+    this.dataSelected.emit( { parent: this.parent, selected: value});
   }
 }
