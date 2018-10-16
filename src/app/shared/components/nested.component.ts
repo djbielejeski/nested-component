@@ -35,29 +35,21 @@ export class NestedComponent implements OnInit {
     return artifactOption && artifactOption2 ? artifactOption2.name === artifactOption2.name : artifactOption2 === artifactOption2;
   }
 
-  emitValue(value, data) {
-    // if (this.data.type === 'choice') {
-    //   if (!this.data.multiple  || this.data.multiple === null) {
-    //     _.forEach(this.parent.options, (option) => {
-    //       option.characterValue = null;
-    //     });
-    //   }
-    // }
-    //
-    // // if composition and not multiple make all children null
-    // if (this.data.type === 'composition') {
-    //   if (!this.data.multiple || this.data.multiple === null) {
-    //     _.forEach(this.data.properties, (property) => {
-    //       property.characterValue = null;
-    //       console.log('its getting here');
-    //       console.log(property);
-    //     });
-    //   }
-    // }
+  emitValue(value) {
     if (value.selected) {
       this.dataSelected.emit(value);
     } else {
-      this.dataSelected.emit( { parent: data, selected: value, parentOfSelected: this.data});
+      this.dataSelected.emit( { parent: this.parent, selected: value, options: this.data});
     }
   }
+
+  // emitValue(value, data) {
+  //   console.log('this.parent');
+  //   console.log(this.parent);
+  //   if (value.selected) {
+  //     this.dataSelected.emit(value);
+  //   } else {
+  //     this.dataSelected.emit( { parent: this.parent, selected: value, });
+  //   }
+  // }
 }

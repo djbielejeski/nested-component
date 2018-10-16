@@ -26,22 +26,22 @@ export class AppRootComponent implements OnInit {
 
   saveArtifact(item: SelectedArtifactModel) {
     // if choice and not multiple make all children null
-    if (item.parentOfSelected.type === 'choice') {
-      if (item.parentOfSelected.multiple) {
-        _.forEach(item.parentOfSelected.options, (currentOption) => {
+    if (item.options.type === 'choice') {
+      if (item.options.multiple) {
+        _.forEach(item.options.options, (currentOption) => {
           currentOption.characterValue = null;
           _.forEach(item.selected, (selectedOption) => {
             if (currentOption.name === selectedOption.name) {
-              currentOption.characterValue = 'true';
-              selectedOption.characterValue = 'true';
+              currentOption.options = 'true';
+              selectedOption.options = 'true';
             }
           });
         });
       }
 
-      if (!item.parentOfSelected.multiple  || item.parentOfSelected.multiple === null) {
-        console.log('its getting here somehow')
-        _.forEach(item.parentOfSelected.options, (option) => {
+      if (!item.options.multiple  || item.options.multiple === null) {
+        console.log('its getting here somehow');
+        _.forEach(item.options.options, (option) => {
           option.characterValue = null;
         });
         item.selected.characterValue = 'true';
@@ -49,11 +49,11 @@ export class AppRootComponent implements OnInit {
     }
 
     // if composition and not multiple make all children null
-    if (item.parentOfSelected.type === 'composition') {
-      if (item.parentOfSelected.multiple) {
-        _.forEach(item.parentOfSelected.properties, (currentOption) => {
+    if (item.options.type === 'composition') {
+      if (item.options.multiple) {
+        _.forEach(item.options.properties, (currentOption) => {
           currentOption.characterValue = null;
-          _.forEach(item.selected, (selectedOption) => {
+          _.forEach(item.options, (selectedOption) => {
             if (currentOption.name === selectedOption.name) {
               currentOption.characterValue = 'true';
             }
@@ -61,8 +61,8 @@ export class AppRootComponent implements OnInit {
         });
       }
 
-      if (!item.parentOfSelected.multiple || item.parentOfSelected.multiple === null) {
-        _.forEach(item.parent.properties, (property) => {
+      if (!item.options.multiple || item.options.multiple === null) {
+        _.forEach(item.options.properties, (property) => {
           if (property !== item.selected) {
             property.characterValue = null;
           }
@@ -72,6 +72,7 @@ export class AppRootComponent implements OnInit {
     }
     console.log('Parent of selected item: ', item.parent);
     console.log('Selected item: ', item.selected);
+    console.log('Options: ', item.options);
 
     console.log('full template');
     console.log(this.data);
