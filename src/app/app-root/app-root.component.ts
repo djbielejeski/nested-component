@@ -19,6 +19,7 @@ export class AppRootComponent implements OnInit {
   }
 
   saveArtifact(item: SelectedArtifactModel) {
-    console.log(item);
+    console.log('Parent of selected item: ', item.parent);
+    console.log('Selected item: ', item.selected);
   }
 }

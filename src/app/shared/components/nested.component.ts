@@ -29,7 +29,12 @@ export class NestedComponent implements OnInit {
     // };
   }
 
-  emitValue(value: ArtifactOption | ArtifactOption[]) {
-    this.dataSelected.emit( { parent: this.parent, selected: value});
+  emitValue(value) {
+    if (value.selected) {
+      this.dataSelected.emit(value);
+    }
+    else {
+      this.dataSelected.emit( { parent: this.parent, selected: value});
+    }
   }
 }
