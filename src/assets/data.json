@@ -5,18 +5,21 @@
     "properties": [
       {
         "name": "Count",
-        "type": "integer"
+        "type": "integer",
+        "characterValue": "10"
       },
       {
         "name": "Weight",
-        "type": "float"
+        "type": "float",
+        "characterValue": "111"
       },
       {
         "name": "Size Grade",
         "type": "choice",
         "options": [
           {
-            "name": "G1"
+            "name": "G1",
+            "characterValue": "true"
           },
           {
             "name": "G2"
@@ -43,7 +46,8 @@
       },
       {
         "name": "Burnt",
-        "type": "boolean"
+        "type": "boolean",
+        "characterValue": "true"
       },
       {
         "name": "Fragmentary",
@@ -65,6 +69,7 @@
           {
             "name": "Lithic",
             "type": "composition",
+            "characterValue": "true",
             "properties": [
               {
                 "name": "Rind",

@@ -1,42 +1,48 @@
-<div *ngIf="data" style="margin-top: 12px; margin-left: 24px;">
+<div *ngIf="data && !isReadOnly" style="margin-top: 12px; margin-left: 24px;">
   <div [ngSwitch]="true" *ngIf="data.type">
-    <div *ngSwitchCase="data.type == 'choice' || data.type == 'Choice' || data.options != undefined">
+    <div *ngSwitchCase="data.type == 'choice'">
       <div *ngIf="!data.multiple">
         <label>
           {{ data.name }}
-          <select [attr.multiple]=""
-                  [(ngModel)]="selectedOption"
-                  (ngModelChange)="emitValue(selectedOption)">
-            <option [ngValue]="null">Select...</option>
+        </label>
+        <mat-form-field>
+          <mat-select [attr.multiple]=""
+                      [(ngModel)]="selectedOption"
+                      (ngModelChange)="emitValue(selectedOption, this.data)"
+                      [compareWith]="compareOptions">
+            <mat-option [value]="null">Select...</mat-option>
 
             <!-- support options -->
-            <option *ngFor="let item of data.options"
-                    [ngValue]="item">
+            <mat-option *ngFor="let item of data.options"
+                        [value]="item">
               {{ item.name }}
-            </option>
+            </mat-option>
 
             <!-- Support choices -->
             <!--<option *ngFor="let item of data.choices"-->
-                    <!--[ngValue]="item">-->
-              <!--{{ item.name }}-->
+            <!--[ngValue]="item">-->
+            <!--{{ item.name }}-->
             <!--</option>-->
-          </select>
-        </label>
+          </mat-select>
+        </mat-form-field>
         <app-nested-component [data]="selectedOption" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
       <div *ngIf="data.multiple">
         <label>
           {{ data.name }}
-          <select multiple
-                  [(ngModel)]="selectedOptions"
-                  (ngModelChange)="emitValue(selectedOptions)">
-            <option [ngValue]="null">Select...</option>
-            <option *ngFor="let item of data.options"
-                    [ngValue]="item">
-              {{ item.name }}
-            </option>
-          </select>
         </label>
+        <mat-form-field>
+          <mat-select multiple
+                  [(ngModel)]="selectedOptions"
+                  (ngModelChange)="emitValue(selectedOptions, this.data)">
+            <mat-option [value]="null">Select...</mat-option>
+            <mat-option *ngFor="let item of data.options"
+                    [value]="item">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
         <div *ngFor="let option of selectedOptions">
           <app-nested-component [data]="option" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
         </div>
@@ -45,26 +51,33 @@
     <div *ngSwitchCase="data.type == 'float'">
       <label>
         {{ data.name }} (float)
-        <input type="number" [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)"/>
       </label>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)"/>
+      </mat-form-field>
     </div>
     <div *ngSwitchCase="data.type == 'integer'">
       <label>
         {{ data.name }} (integer)
-        <input type="number" [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" />
       </label>
+      <mat-form-field>
+        <input matInput type="number" [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" />
+      </mat-form-field>
     </div>
     <div *ngSwitchCase="data.type == 'boolean'">
-      <label>
-        {{ data.name }} (boolean)
-        <input type="checkbox"  [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" />
-      </label>
+        <mat-checkbox  [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)">
+          <label>
+            {{ data.name }} (boolean)
+          </label>
+        </mat-checkbox>
     </div>
     <div *ngSwitchCase="data.type == 'text'">
       <label>
         {{ data.name }} (text)
-        <textarea [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)"></textarea>
       </label>
+      <mat-form-field>
+        <textarea matInput [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)"></textarea>
+      </mat-form-field>
     </div>
     <div *ngSwitchCase="data.type == 'composition'">
       <div *ngFor="let item of data.properties">
@@ -91,3 +104,99 @@
 
   </div>
 </div>
+<div *ngIf="data && isReadOnly" style="margin-top: 12px; margin-left: 24px;">
+  <div [ngSwitch]="true" *ngIf="data.type">
+    <div *ngSwitchCase="data.type == 'choice'">
+      <div *ngIf="!data.multiple">
+        <label>
+          {{ data.name }}
+          <select [attr.multiple]=""
+                  [(ngModel)]="selectedOption"
+                  disabled
+                  (ngModelChange)="emitValue(selectedOption, this.data)">
+            <option [ngValue]="null">Select...</option>
+
+            <!-- support options -->
+            <option *ngFor="let item of data.options"
+                    [ngValue]="item">
+              {{ item.name }}
+            </option>
+
+            <!-- Support choices -->
+            <!--<option *ngFor="let item of data.choices"-->
+            <!--[ngValue]="item">-->
+            <!--{{ item.name }}-->
+            <!--</option>-->
+          </select>
+        </label>
+        <app-nested-component [data]="selectedOption" [parent]="data" (dataSelected)="emitValue($event)" [isReadOnly]="true"></app-nested-component>
+      </div>
+      <div *ngIf="data.multiple">
+        <label>
+          {{ data.name }}
+          <select multiple
+                  [(ngModel)]="selectedOptions"
+                  disabled
+                  (ngModelChange)="emitValue(selectedOptions)">
+            <option [ngValue]="null">Select...</option>
+            <option *ngFor="let item of data.options"
+                    [ngValue]="item">
+              {{ item.name }}
+            </option>
+          </select>
+        </label>
+        <div *ngFor="let option of selectedOptions">
+          <app-nested-component [data]="option" [parent]="data" (dataSelected)="emitValue($event)" [isReadOnly]="true"></app-nested-component>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="data.type == 'float'">
+      <label>
+        {{ data.name }} (float)
+        <input type="number" [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" disabled/>
+      </label>
+    </div>
+    <div *ngSwitchCase="data.type == 'integer'">
+      <label>
+        {{ data.name }} (integer)
+        <input type="number" [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" disabled/>
+      </label>
+    </div>
+    <div *ngSwitchCase="data.type == 'boolean'">
+      <label>
+        {{ data.name }} (boolean)
+        <input type="checkbox"  [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" disabled/>
+      </label>
+    </div>
+    <div *ngSwitchCase="data.type == 'text'">
+      <label>
+        {{ data.name }} (text)
+        <textarea [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)" disabled></textarea>
+      </label>
+    </div>
+    <div *ngSwitchCase="data.type == 'composition'">
+      <div *ngFor="let item of data.properties">
+        <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)" [isReadOnly]="true"></app-nested-component>
+      </div>
+    </div>
+    <div *ngSwitchDefault>
+      {{ data.name }} ({{ data.type }})
+    </div>
+  </div>
+  <div *ngIf="!data.type">
+    <div *ngIf="data.options || data.properties; else noOptions">
+      {{ data.name }}
+      <div *ngFor="let item of data.options">
+        <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)" [isReadOnly]="true"></app-nested-component>
+      </div>
+      <div *ngFor="let item of data.properties">
+        <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)" [isReadOnly]="true"></app-nested-component>
+      </div>
+    </div>
+    <ng-template #noOptions>
+      <!--{{ data.name }}-->
+    </ng-template>
+
+  </div>
+</div>
+
