@@ -21,22 +21,4 @@ export class AppRootComponent implements OnInit {
   saveArtifact(item: SelectedArtifactModel) {
     console.log(item);
   }
-  // clearProperties(item: ArtifactOption) {
-  //   console.log(item);
-  // }
-  // // saveArtifact(item: ArtifactOption | ArtifactOption[]) {
-  // saveArtifact(item: ArtifactOption, parent: ArtifactOption) {
-  //   console.log('this is the parent');
-  //   console.log(parent);
-  //   // _.forEach(this.data, (dataOption) => {
-  //   //
-  //   // });
-  //   if (item.type === 'choice' || item.type === 'composition' || !item.type) {
-  //     item.characterValue = 'true';
-  //   }
-  //   console.log('this is the full data');
-  //   console.log(this.data);
-  //   console.log('The bottom is the Itme');
-  //   console.log(item);
-  // }
 }

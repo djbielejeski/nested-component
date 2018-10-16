@@ -1,6 +1,6 @@
 <div *ngIf="data" style="margin-top: 12px; margin-left: 24px;">
-  <div [ngSwitch]="true" *ngIf="data.type || data.choices">
-    <div *ngSwitchCase="data.type == 'choice' || data.type == 'Choice' || data.choices != undefined">
+  <div [ngSwitch]="true" *ngIf="data.type">
+    <div *ngSwitchCase="data.type == 'choice' || data.type == 'Choice' || data.options != undefined">
       <div *ngIf="!data.multiple">
         <label>
           {{ data.name }}
@@ -16,10 +16,10 @@
             </option>
 
             <!-- Support choices -->
-            <option *ngFor="let item of data.choices"
-                    [ngValue]="item">
-              {{ item.name }}
-            </option>
+            <!--<option *ngFor="let item of data.choices"-->
+                    <!--[ngValue]="item">-->
+              <!--{{ item.name }}-->
+            <!--</option>-->
           </select>
         </label>
         <app-nested-component [data]="selectedOption" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
@@ -66,7 +66,7 @@
         <textarea [(ngModel)]="data.characterValue" (ngModelChange)="emitValue(data)"></textarea>
       </label>
     </div>
-    <div *ngSwitchCase="data.type == 'group'">
+    <div *ngSwitchCase="data.type == 'composition'">
       <div *ngFor="let item of data.properties">
         <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
