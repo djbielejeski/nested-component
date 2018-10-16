@@ -1,1 +1,1 @@
-<app-nested-component [data]="data" (dataSelected)="saveArtifact($event)"></app-nested-component>
+<app-nested-component [data]="data" (dataSelected)="saveArtifact($event)" (parentItem)="clearProperties($event)"></app-nested-component>

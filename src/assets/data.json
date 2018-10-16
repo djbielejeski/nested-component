@@ -1,6 +1,7 @@
 [
   {
     "name": "Artifact",
+    "type": "composition",
     "properties": [
       {
         "name": "Count",
@@ -25,6 +26,18 @@
           },
           {
             "name": "G4"
+          },
+          {
+            "name": "No. 10"
+          },
+          {
+            "name": "No. 18"
+          },
+          {
+            "name": "No. 35"
+          },
+          {
+            "name": "No. 60"
           }
         ]
       },
@@ -47,9 +60,11 @@
       },
       {
         "name": "Artifact Class",
-        "choices": [
+        "type": "choice",
+        "options": [
           {
             "name": "Lithic",
+            "type": "composition",
             "properties": [
               {
                 "name": "Rind",
@@ -69,10 +84,11 @@
               },
               {
                 "name": "Material",
-                "type": "Choice",
+                "type": "choice",
                 "options": [
                   {
                     "name": "Chert",
+                    "type": "choice",
                     "options": [
                       {
                         "name": "Prairie du Chien Chert"
@@ -89,9 +105,11 @@
               },
               {
                 "name": "Artifact Type",
+                "type": "choice",
                 "options": [
                   {
                     "name": "Non-Tool",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Morphology",
@@ -109,6 +127,7 @@
                   },
                   {
                     "name": "Tool",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Morphology",
@@ -119,6 +138,7 @@
                           },
                           {
                             "name": "Abrader",
+                            "type": "choice",
                             "options": [
                               {
                                 "name": "Surface Abrader"
@@ -133,11 +153,12 @@
                           },
                           {
                             "name": "Axe",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Extent of Grooving",
                                 "type": "choice",
-                                "choices": [
+                                "options": [
                                   {
                                     "name": "Fully"
                                   },
@@ -189,6 +210,7 @@
                           },
                           {
                             "name": "Drill",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Haft Shape/Type",
@@ -245,6 +267,7 @@
                           },
                           {
                             "name": "Knife",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Typology",
@@ -325,6 +348,7 @@
                           },
                           {
                             "name": "Maul",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Extent of Grooving",
@@ -354,6 +378,7 @@
                           },
                           {
                             "name": "Scraper",
+                            "type": "choice",
                             "options": [
                               {
                                 "name": "Logan Creek Scraper"
@@ -362,6 +387,7 @@
                           },
                           {
                             "name": "Projectile Point",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Point Type",
@@ -389,6 +415,7 @@
                               },
                               {
                                 "name": "Base",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Ear Projection",
@@ -501,6 +528,7 @@
                               },
                               {
                                 "name": "Notch",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Notch Type",
@@ -542,6 +570,7 @@
                               },
                               {
                                 "name": "Stem",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Stem Type",
@@ -583,6 +612,7 @@
                               },
                               {
                                 "name": "Projectile Point Blade",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Cross Section",
@@ -667,6 +697,7 @@
           },
           {
             "name": "Pottery",
+            "type": "composition",
             "properties": [
               {
                 "name": "Artifact Type",
@@ -681,9 +712,11 @@
                         "options": [
                           {
                             "name": "Handle",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -1283,6 +1316,7 @@
                           },
                           {
                             "name": "Tab",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
@@ -1861,9 +1895,11 @@
                           },
                           {
                             "name": "Body",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -2433,9 +2469,11 @@
                           },
                           {
                             "name": "Base",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -3005,9 +3043,11 @@
                           },
                           {
                             "name": "Neck",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -3577,9 +3617,11 @@
                           },
                           {
                             "name": "Shoulder",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -4149,6 +4191,7 @@
                           },
                           {
                             "name": "Rim",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Form",
@@ -4159,38 +4202,34 @@
                                   },
                                   {
                                     "name": "Modfied",
+                                    "type": "choice",
                                     "options": [
                                       {
-                                        "name": "Modfied",
-                                        "options": [
-                                          {
-                                            "name": "Thickened"
-                                          },
-                                          {
-                                            "name": "Folded"
-                                          },
-                                          {
-                                            "name": "Filleted"
-                                          },
-                                          {
-                                            "name": "Rolled (Interior or Exterior only)"
-                                          },
-                                          {
-                                            "name": "Castellated"
-                                          },
-                                          {
-                                            "name": "Braced"
-                                          },
-                                          {
-                                            "name": "S-rim"
-                                          },
-                                          {
-                                            "name": "Tabbed"
-                                          },
-                                          {
-                                            "name": "Collared"
-                                          }
-                                        ]
+                                        "name": "Thickened"
+                                      },
+                                      {
+                                        "name": "Folded"
+                                      },
+                                      {
+                                        "name": "Filleted"
+                                      },
+                                      {
+                                        "name": "Rolled (Interior or Exterior only)"
+                                      },
+                                      {
+                                        "name": "Castellated"
+                                      },
+                                      {
+                                        "name": "Braced"
+                                      },
+                                      {
+                                        "name": "S-rim"
+                                      },
+                                      {
+                                        "name": "Tabbed"
+                                      },
+                                      {
+                                        "name": "Collared"
                                       }
                                     ]
                                   },
@@ -4201,6 +4240,7 @@
                               },
                               {
                                 "name": "Shape",
+                                "type": "choice",
                                 "options": [
                                   {
                                     "name": "Recurvate"
@@ -4215,6 +4255,7 @@
                               },
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -4295,6 +4336,7 @@
                               },
                               {
                                 "name": "Orientation",
+                                "type": "choice",
                                 "options": [
                                   {
                                     "name": "Inverted"
@@ -4804,6 +4846,7 @@
                           },
                           {
                             "name": "Lip",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Decoration",
@@ -5302,9 +5345,11 @@
                           },
                           {
                             "name": "Lug",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -5922,9 +5967,11 @@
                         "options": [
                           {
                             "name": "Handle",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -6524,6 +6571,7 @@
                           },
                           {
                             "name": "Tab",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
@@ -7102,9 +7150,11 @@
                           },
                           {
                             "name": "Body",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -7674,9 +7724,11 @@
                           },
                           {
                             "name": "Base",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -8246,9 +8298,11 @@
                           },
                           {
                             "name": "Neck",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -8818,9 +8872,11 @@
                           },
                           {
                             "name": "Shoulder",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -9390,6 +9446,7 @@
                           },
                           {
                             "name": "Rim",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Form",
@@ -9400,38 +9457,34 @@
                                   },
                                   {
                                     "name": "Modfied",
+                                    "type": "choice",
                                     "options": [
                                       {
-                                        "name": "Modfied",
-                                        "options": [
-                                          {
-                                            "name": "Thickened"
-                                          },
-                                          {
-                                            "name": "Folded"
-                                          },
-                                          {
-                                            "name": "Filleted"
-                                          },
-                                          {
-                                            "name": "Rolled (Interior or Exterior only)"
-                                          },
-                                          {
-                                            "name": "Castellated"
-                                          },
-                                          {
-                                            "name": "Braced"
-                                          },
-                                          {
-                                            "name": "S-rim"
-                                          },
-                                          {
-                                            "name": "Tabbed"
-                                          },
-                                          {
-                                            "name": "Collared"
-                                          }
-                                        ]
+                                        "name": "Thickened"
+                                      },
+                                      {
+                                        "name": "Folded"
+                                      },
+                                      {
+                                        "name": "Filleted"
+                                      },
+                                      {
+                                        "name": "Rolled (Interior or Exterior only)"
+                                      },
+                                      {
+                                        "name": "Castellated"
+                                      },
+                                      {
+                                        "name": "Braced"
+                                      },
+                                      {
+                                        "name": "S-rim"
+                                      },
+                                      {
+                                        "name": "Tabbed"
+                                      },
+                                      {
+                                        "name": "Collared"
                                       }
                                     ]
                                   },
@@ -9442,6 +9495,7 @@
                               },
                               {
                                 "name": "Shape",
+                                "type": "choice",
                                 "options": [
                                   {
                                     "name": "Recurvate"
@@ -9456,6 +9510,7 @@
                               },
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -9536,6 +9591,7 @@
                               },
                               {
                                 "name": "Orientation",
+                                "type": "choice",
                                 "options": [
                                   {
                                     "name": "Inverted"
@@ -10045,6 +10101,7 @@
                           },
                           {
                             "name": "Lip",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Decoration",
@@ -10543,9 +10600,11 @@
                           },
                           {
                             "name": "Lug",
+                            "type": "composition",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Type",
@@ -11225,6 +11284,7 @@
           },
           {
             "name": "Zoological",
+            "type": "composition",
             "properties": [
               {
                 "name": "Biological Classification",
@@ -11232,6 +11292,7 @@
                 "options": [
                   {
                     "name": "Amphibian",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Material",
@@ -11274,6 +11335,7 @@
                   },
                   {
                     "name": "Avian",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Material",
@@ -11322,6 +11384,7 @@
                   },
                   {
                     "name": "Condrichthian",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Material",
@@ -11364,6 +11427,7 @@
                   },
                   {
                     "name": "Osteichthian",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Material",
@@ -11409,6 +11473,7 @@
                   },
                   {
                     "name": "Reptilian",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Material",
@@ -11460,6 +11525,7 @@
                   },
                   {
                     "name": "Mammalian",
+                    "type": "composition",
                     "properties": [
                       {
                         "name": "Material",
@@ -11621,6 +11687,7 @@
           },
           {
             "name": "Botanical",
+            "type": "composition",
             "properties": [
               {
                 "name": "Morphology",
@@ -11705,6 +11772,7 @@
           },
           {
             "name": "Matrix",
+            "type": "composition",
             "properties": [
               {
                 "name": "Morphology",
@@ -11735,6 +11803,7 @@
           },
           {
             "name": "Metal",
+            "type": "composition",
             "properties": [
               {
                 "name": "Morphology",
