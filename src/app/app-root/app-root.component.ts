@@ -15,13 +15,14 @@ export class AppRootComponent implements OnInit {
   constructor(private artifactsOptionsService: ArtifactsOptionsService) { }
 
   ngOnInit() {
+    this.artifactsOptionsService.getTemplateOptions([]).subscribe( temp => {
+      this.template = temp;
+      console.log('this is temp', this.template);
+    });
     this.artifactsOptionsService.getOptions([]).subscribe(data => {
       this.data = data;
-      this.template = _.cloneDeep(data);
     });
-    // this.artifactsOptionsService.getOptions([]).subscribe(data => {
-    //   this.template = _.cloneDeep(data);
-    // });
+    // Get the template data from the json
   }
 
   saveArtifact(item: SelectedArtifactModel) {
@@ -73,11 +74,9 @@ export class AppRootComponent implements OnInit {
     console.log('Parent of selected item: ', item.parent);
     console.log('Selected item: ', item.selected);
     console.log('Options: ', item.options);
+    console.log('Template Node:' , item.templateNode);
 
     console.log('full template');
     console.log(this.data);
-    //
-    // console.log('original template');
-    // console.log(this.template);
   }
 }

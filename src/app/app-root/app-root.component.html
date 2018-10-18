@@ -1,1 +1,3 @@
-<app-nested-component [data]="data" (dataSelected)="saveArtifact($event)"></app-nested-component>
+<app-nested-component [data]="data" [templateNode]="template" (dataSelected)="saveArtifact($event)"></app-nested-component>
+<h2>Read Only Start</h2>
+<app-nested-component [data]="data" [templateNode]="template"  [isReadOnly]="true" (dataSelected)="saveArtifact($event)"></app-nested-component>

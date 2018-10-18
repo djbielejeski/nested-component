@@ -5,11 +5,11 @@
     "properties": [
       {
         "name": "Count",
-        "type": "integer",
+        "type": "integer"
       },
       {
         "name": "Weight",
-        "type": "float",
+        "type": "float"
       },
       {
         "name": "Size Grade",
@@ -19,7 +19,7 @@
             "name": "G1"
           },
           {
-            "name": "G2",
+            "name": "G2"
           },
           {
             "name": "G3"

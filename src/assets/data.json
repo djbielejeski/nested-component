@@ -707,17 +707,21 @@
               {
                 "name": "Artifact Type",
                 "type": "choice",
+                "characterValue": "true",
                 "options": [
                   {
                     "name": "Sherd",
+                    "characterValue": "true",
                     "properties": [
                       {
                         "name": "Morphology",
                         "type": "choice",
+                        "characterValue": "true",
                         "options": [
                           {
                             "name": "Handle",
-                            "type": "composition"
+                            "type": "composition",
+                            "characterValue": "true",
                             "properties": [
                               {
                                 "name": "Surface Treatment",
@@ -11239,6 +11243,7 @@
                   },
                   {
                     "name": "Inorganic",
+                    "type": "true",
                     "characterValue": "true",
                     "options": [
                       {

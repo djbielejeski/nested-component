@@ -23,6 +23,19 @@ export class ArtifactsOptionsService {
       ));
   }
 
+  getTemplateOptions(path: string[]): Observable<ArtifactOption> {
+    return this.httpClient.get(`/assets/template.json`)
+      .pipe(map(
+        (res: ArtifactOption[]) => {
+          let data: ArtifactOption = res[0];
+          // TODO: filter the data from path
+          //data = this.assignId(data, 1);
+          //console.log(data);
+          return data;
+        }
+      ));
+  }
+
   private assignId(item, i) {
     for (const key in item) {
       // check also if property is not inherited from prototype
