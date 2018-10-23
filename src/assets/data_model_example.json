@@ -1,0 +1,418 @@
+[
+  {
+    "name": "Artifact",
+    "type": "composition",
+    "properties": [
+      {
+        "name": "Count",
+        "type": "integer"
+      },
+      {
+        "name": "Weight",
+        "type": "float"
+      },
+      {
+        "name": "Size Grade",
+        "type": "choice",
+        "options": [
+          {
+            "name": "G1"
+          },
+          {
+            "name": "G2"
+          },
+          {
+            "name": "G3"
+          },
+          {
+            "name": "G4"
+          }
+        ]
+      },
+      {
+        "name": "Burnt",
+        "type": "boolean"
+      },
+      {
+        "name": "Fragmentary",
+        "type": "boolean"
+      },
+      {
+        "name": "Fragmentary",
+        "type": "text"
+      },
+      {
+        "name": "Further Analysis Suggested",
+        "type": "boolean"
+      },
+      {
+        "name": "Notes",
+        "type": "text",
+        "multiple": true
+      },
+      {
+        "name": "Motifs",
+        "type": "composition",
+        "multiple": true,
+        "properties": [
+          {
+            "name": "Motif",
+            "type": "choice",
+            "options": [
+              {
+                "name": "Chevron",
+                "type": "choice",
+                "options": [
+                  {
+                    "name": "Inverted"
+                  },
+                  {
+                    "name": "Nested"
+                  },
+                  {
+                    "name": "Hachured"
+                  },
+                  {
+                    "name": "Basic"
+                  },
+                  {
+                    "name": "Hachured inverted"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Artifact Class",
+        "type": "choice",
+        "options": [
+          {
+            "name": "Lithic",
+            "type": "composition",
+            "properties": [
+              {
+                "name": "Rind",
+                "type": "boolean"
+              },
+              {
+                "name": "Heat-Treated",
+                "type": "boolean"
+              },
+              {
+                "name": "Cortex",
+                "type": "boolean"
+              },
+              {
+                "name": "Rind",
+                "type": "boolean"
+              },
+              {
+                "name": "Material",
+                "type": "choice",
+                "options": [
+                  {
+                    "name": "Chert",
+                    "type": "Choice",
+                    "options": [
+                      {
+                        "name": "Prairie du Chien Chert"
+                      },
+                      {
+                        "name": "Grand Meadow Chert"
+                      },
+                      {
+                        "name": "Cedar Valley Chert"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Artifact Type",
+                "type": "choice",
+                "options": [
+                  {
+                    "name": "Non-Tool",
+                    "type": "composition",
+                    "properties": [
+                      {
+                        "name": "Morphology",
+                        "type": "choice",
+                        "options": [
+                          {
+                            "name": "Debitage"
+                          },
+                          {
+                            "name": "Fire-Cracked Rock"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Tool",
+                    "type": "composition",
+                    "properties": [
+                      {
+                        "name": "Morphology",
+                        "type": "choice",
+                        "options": [
+                          {
+                            "name": "Anvil"
+                          },
+                          {
+                            "name": "Abrader",
+                            "type": "choice",
+                            "options": [
+                              {
+                                "name": "Surface Abrader"
+                              },
+                              {
+                                "name": "Channeled Abrader"
+                              },
+                              {
+                                "name": "Unpatterned Abrader"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Axe",
+                            "type": "composition",
+                            "properties": [
+                              {
+                                "name": "Extent of Grooving",
+                                "type": "choice",
+                                "choices": [
+                                  {
+                                    "name": "Fully"
+                                  },
+                                  {
+                                    "name": "Half"
+                                  },
+                                  {
+                                    "name": "3/4"
+                                  },
+                                  {
+                                    "name": "Notched"
+                                  },
+                                  {
+                                    "name": "1/4"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Biface"
+                          },
+                          {
+                            "name": "Adze"
+                          },
+                          {
+                            "name": "Awl"
+                          },
+                          {
+                            "name": "Celt"
+                          },
+                          {
+                            "name": "Chopper"
+                          },
+                          {
+                            "name": "Blade"
+                          },
+                          {
+                            "name": "Burin"
+                          },
+                          {
+                            "name": "Graver"
+                          },
+                          {
+                            "name": "Hammerstone"
+                          },
+                          {
+                            "name": "Core"
+                          },
+                          {
+                            "name": "Drill",
+                            "type": "composition",
+                            "properties": [
+                              {
+                                "name": "Haft Shape/Type",
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "name": "Basal-Notched"
+                                  },
+                                  {
+                                    "name": "Basal-Thinned"
+                                  },
+                                  {
+                                    "name": "Contracting Stemmed"
+                                  },
+                                  {
+                                    "name": "Corner-Notched"
+                                  },
+                                  {
+                                    "name": "Corner-Tanged"
+                                  },
+                                  {
+                                    "name": "Double Side-Notched"
+                                  },
+                                  {
+                                    "name": "E-Shaped Corner-Notched"
+                                  },
+                                  {
+                                    "name": "Expanded-Stemmed"
+                                  },
+                                  {
+                                    "name": "Expanding-Stemmed"
+                                  },
+                                  {
+                                    "name": "Side-Notched"
+                                  },
+                                  {
+                                    "name": "Single Basal-Notched"
+                                  },
+                                  {
+                                    "name": "Straight-Stemmed"
+                                  },
+                                  {
+                                    "name": "Tri-Notched"
+                                  },
+                                  {
+                                    "name": "Unnotched"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Mano"
+                          },
+                          {
+                            "name": "Knife",
+                            "type": "composition",
+                            "properties": [
+                              {
+                                "name": "Typology",
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "name": "Thebes Knife"
+                                  },
+                                  {
+                                    "name": "Bass Knife"
+                                  },
+                                  {
+                                    "name": "Cody Knife"
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "Haft Shape/Type",
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "name": "Basal-Notched"
+                                  },
+                                  {
+                                    "name": "Basal-Thinned"
+                                  },
+                                  {
+                                    "name": "Contracting Stemmed"
+                                  },
+                                  {
+                                    "name": "Corner-Notched"
+                                  },
+                                  {
+                                    "name": "Corner-Tanged"
+                                  },
+                                  {
+                                    "name": "Double Side-Notched"
+                                  },
+                                  {
+                                    "name": "E-Shaped Corner-Notched"
+                                  },
+                                  {
+                                    "name": "Expanded-Stemmed"
+                                  },
+                                  {
+                                    "name": "Expanding-Stemmed"
+                                  },
+                                  {
+                                    "name": "Side-Notched"
+                                  },
+                                  {
+                                    "name": "Single Basal-Notched"
+                                  },
+                                  {
+                                    "name": "Straight-Stemmed"
+                                  },
+                                  {
+                                    "name": "Tri-Notched"
+                                  },
+                                  {
+                                    "name": "Unnotched"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Indeterminate Ground Stone"
+                          },
+                          {
+                            "name": "Perforator"
+                          },
+                          {
+                            "name": "Net Weight"
+                          },
+                          {
+                            "name": "Metate"
+                          },
+                          {
+                            "name": "Maul",
+                            "type": "composition",
+                            "properties": [
+                              {
+                                "name": "Extent of Grooving",
+                                "type": "choice",
+                                "options": [
+                                  {
+                                    "name": "Fully"
+                                  },
+                                  {
+                                    "name": "Half"
+                                  },
+                                  {
+                                    "name": "3/4"
+                                  },
+                                  {
+                                    "name": "Notched"
+                                  },
+                                  {
+                                    "name": "1/4"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "name": "Spokeshave"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+

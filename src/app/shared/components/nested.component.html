@@ -25,7 +25,7 @@
             <!--</option>-->
           </mat-select>
         </mat-form-field>
-        <app-nested-component [data]="selectedOption" [parent]="data" [templateNode]="currentNode" (dataSelected)="emitValue($event)"></app-nested-component>
+        <app-nested-component [data]="selectedOption" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
       <div *ngIf="data.multiple">
         <label>
@@ -44,7 +44,7 @@
         </mat-form-field>
 
         <div *ngFor="let option of selectedOptions">
-          <app-nested-component [data]="option" [parent]="data" [templateNode]="currentNode" (dataSelected)="emitValue($event)"></app-nested-component>
+          <app-nested-component [data]="option" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
     </div>
     <div *ngSwitchCase="data.type == 'composition'">
       <div *ngFor="let item of data.properties">
-        <app-nested-component [data]="item" [parent]="data" [templateNode]="currentNode" (dataSelected)="emitValue($event)"></app-nested-component>
+        <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
     </div>
     <div *ngSwitchDefault>
@@ -92,10 +92,10 @@
     <div *ngIf="data.options || data.properties; else noOptions">
         {{ data.name }}
         <div *ngFor="let item of data.options">
-          <app-nested-component [data]="item" [parent]="data" [templateNode]="currentNode" (dataSelected)="emitValue($event)"></app-nested-component>
+          <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
         </div>
         <div *ngFor="let item of data.properties">
-          <app-nested-component [data]="item" [parent]="data" [templateNode]="currentNode" (dataSelected)="emitValue($event)"></app-nested-component>
+          <app-nested-component [data]="item" [parent]="data" (dataSelected)="emitValue($event)"></app-nested-component>
         </div>
     </div>
     <ng-template #noOptions>
@@ -133,7 +133,7 @@
             <!--</option>-->
           </mat-select>
         </mat-form-field>
-        <app-nested-component [data]="selectedOption" [parent]="data" [templateNode]="currentNode" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
+        <app-nested-component [data]="selectedOption" [parent]="data" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
       <div *ngIf="data.multiple">
         <label>
@@ -153,7 +153,7 @@
         </mat-form-field>
 
         <div *ngFor="let option of selectedOptions">
-          <app-nested-component [data]="option" [parent]="data" [templateNode]="currentNode" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
+          <app-nested-component [data]="option" [parent]="data" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
         </div>
       </div>
     </div>
@@ -190,7 +190,7 @@
     </div>
     <div *ngSwitchCase="data.type == 'composition'">
       <div *ngFor="let item of data.properties">
-        <app-nested-component [data]="item" [parent]="data" [templateNode]="currentNode" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
+        <app-nested-component [data]="item" [parent]="data" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
     </div>
     <div *ngSwitchDefault>
@@ -201,10 +201,10 @@
     <div *ngIf="data.options || data.properties; else noOptions">
       {{ data.name }}
       <div *ngFor="let item of data.options">
-        <app-nested-component [data]="item" [parent]="data" [templateNode]="currentNode" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
+        <app-nested-component [data]="item" [parent]="data" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
       <div *ngFor="let item of data.properties">
-        <app-nested-component [data]="item" [parent]="data" [templateNode]="currentNode" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
+        <app-nested-component [data]="item" [parent]="data" [isReadOnly]="true" (dataSelected)="emitValue($event)"></app-nested-component>
       </div>
     </div>
     <ng-template #noOptions>

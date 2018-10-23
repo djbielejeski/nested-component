@@ -830,7 +830,7 @@
                               },
                               {
                                 "name": "Decoration",
-                                "type": "group",
+                                "type": "composition",
                                 "properties": [
                                   {
                                     "name": "Cord Twist",
