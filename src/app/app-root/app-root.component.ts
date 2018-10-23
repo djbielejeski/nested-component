@@ -10,21 +10,26 @@ import * as _ from 'lodash';
 })
 export class AppRootComponent implements OnInit {
   data: ArtifactOption = null;
-  template: ArtifactOption = null;
 
   constructor(private artifactsOptionsService: ArtifactsOptionsService) { }
 
   ngOnInit() {
     this.artifactsOptionsService.getOptions([]).subscribe(data => {
       this.data = data;
-      this.template = _.cloneDeep(data);
     });
-    // this.artifactsOptionsService.getOptions([]).subscribe(data => {
-    //   this.template = _.cloneDeep(data);
-    // });
   }
 
   saveArtifact(item: SelectedArtifactModel) {
+
+    console.log('removing all sub items.');
+    console.log(item);
+    if (item.parent != null && item.options) {
+      this.removeSelectedValues(item.options);
+    }
+    else {
+      this.removeSelectedValues(item.selected.options);
+    }
+
     // if choice and not multiple make all children null
     if (item.options.type === 'choice') {
       if (item.options.multiple) {
@@ -38,9 +43,7 @@ export class AppRootComponent implements OnInit {
           });
         });
       }
-
-      if (!item.options.multiple  || item.options.multiple === null) {
-        console.log('its getting here somehow');
+      else {
         _.forEach(item.options.options, (option) => {
           option.characterValue = null;
         });
@@ -60,8 +63,7 @@ export class AppRootComponent implements OnInit {
           });
         });
       }
-
-      if (!item.options.multiple || item.options.multiple === null) {
+      else {
         _.forEach(item.options.properties, (property) => {
           if (property !== item.selected) {
             property.characterValue = null;
@@ -70,14 +72,25 @@ export class AppRootComponent implements OnInit {
         item.selected.characterValue = 'true';
       }
     }
+
     console.log('Parent of selected item: ', item.parent);
     console.log('Selected item: ', item.selected);
     console.log('Options: ', item.options);
+    console.log('this.data: ', this.data);
+  }
 
-    console.log('full template');
-    console.log(this.data);
-    //
-    // console.log('original template');
-    // console.log(this.template);
+  private removeSelectedValues(option: ArtifactOption) {
+    for (let property in option) {
+      const value = option[property];
+      if (property === 'characterValue' && value != null) {
+        console.error('removing from: ', option);
+        option[property] = null;
+      }
+      else if (_.isArray(value) || _.isObject(value)) {
+        for (const childProperty in value) {
+          this.removeSelectedValues(value[childProperty]);
+        }
+      }
+    }
   }
 }

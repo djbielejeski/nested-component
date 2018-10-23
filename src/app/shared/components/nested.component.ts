@@ -51,7 +51,7 @@ export class NestedComponent implements OnInit {
   }
 
   emitValue(value) {
-    if (value.selected) {
+    if (value && value.selected) {
       this.dataSelected.emit(value);
     } else {
       this.dataSelected.emit( { parent: this.parent, selected: value, options: this.data});
