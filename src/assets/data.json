@@ -850,10 +850,11 @@
                                   },
                                   {
                                     "name": "Theme",
-                                    "type": "group",
+                                    "type": "composition",
                                     "properties": [
                                       {
                                         "name": "Theme",
+                                        "type": "choice",
                                         "options": [
                                           {
                                             "name": "Bartron Phase"
@@ -880,6 +881,7 @@
                                       },
                                       {
                                         "name": "Placement",
+                                        "type": "choice",
                                         "options": [
                                           {
                                             "name": "Interior"
@@ -994,6 +996,7 @@
                                       },
                                       {
                                         "name": "Placement",
+                                        "type": "choice",
                                         "options": [
                                           {
                                             "name": "Interior"
@@ -11243,7 +11246,7 @@
                   },
                   {
                     "name": "Inorganic",
-                    "type": "true",
+                    "type": "choice",
                     "characterValue": "true",
                     "options": [
                       {

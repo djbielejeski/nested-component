@@ -33,7 +33,7 @@
         </label>
         <mat-form-field>
           <mat-select multiple
-                  [(ngModel)]="selectedOptions"
+                  [ngModel]="selectedOptions"
                   (ngModelChange)="emitValue(selectedOptions, this.data)">
             <mat-option [value]="null">Select...</mat-option>
             <mat-option *ngFor="let item of data.options"
