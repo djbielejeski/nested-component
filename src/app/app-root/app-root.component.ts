@@ -23,10 +23,10 @@ export class AppRootComponent implements OnInit {
 
     console.log('removing all sub items.');
     console.log(item);
-    if (item.parent != null && item.options) {
+    if (item.parent != null && item.options && item.options !== item.selected) {
       this.removeSelectedValues(item.options);
     }
-    else {
+    else if (item.selected.options) {
       this.removeSelectedValues(item.selected.options);
     }
 
